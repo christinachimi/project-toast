@@ -18,7 +18,7 @@ const ICONS_BY_VARIANT = {
   error: AlertOctagon,
 };
 
-function Toast({ variant = "notice", children }) {
+function Toast({ variant = "notice", onClose, children }) {
   if (!ICONS_BY_VARIANT[variant]) {
     throw new Error(`Unknown variant: ${variant}`);
   }
@@ -29,7 +29,7 @@ function Toast({ variant = "notice", children }) {
         <Icon size={24} />
       </div>
       <div className={styles.content}>{children}</div>
-      <button className={styles.closeButton}>
+      <button className={styles.closeButton} onClick={onClose}>
         <X size={24} />
         <VisuallyHidden>Dismiss message</VisuallyHidden>
       </button>
