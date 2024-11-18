@@ -11,9 +11,6 @@ function ToastPlayground() {
   const [message, setMessage] = React.useState("");
   const [variant, setVariant] = React.useState("notice");
 
-  // React.useEffect(() => {
-  //   console.log(message);
-  // }, [message]);
   return (
     <div className={styles.wrapper}>
       <header>
@@ -21,7 +18,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
-      <Toast />
+      <Toast variant={variant}>{message}</Toast>
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
           <label
