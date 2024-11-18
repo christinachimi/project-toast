@@ -3,6 +3,7 @@ import React from "react";
 import Button from "../Button";
 
 import styles from "./ToastPlayground.module.css";
+import Toast from "../Toast/Toast";
 
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
 
@@ -20,6 +21,7 @@ function ToastPlayground() {
         <h1>Toast Playground</h1>
       </header>
 
+      <Toast />
       <div className={styles.controlsWrapper}>
         <div className={styles.row}>
           <label
