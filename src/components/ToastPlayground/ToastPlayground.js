@@ -19,9 +19,11 @@ function ToastPlayground() {
     event.preventDefault();
     const allToasts = [
       ...toasts,
-      <Toast key={toasts.length} variant={variant}>
-        {message}
-      </Toast>,
+      {
+        id: crypto.randomUUID(),
+        variant,
+        message,
+      },
     ];
     setVariant(DEFAULT_VARIANT);
     setMessage(DEFAULT_MESSAGE);
