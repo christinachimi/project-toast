@@ -20,4 +20,4 @@ function ToastShelf({ toasts = [] }) {
   );
 }
 
-export default ToastShelf;
+export default React.memo(ToastShelf);
