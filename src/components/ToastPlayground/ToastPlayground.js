@@ -3,7 +3,6 @@ import React from "react";
 import Button from "../Button";
 
 import styles from "./ToastPlayground.module.css";
-import Toast from "../Toast/Toast";
 import ToastShelf from "../ToastShelf/ToastShelf";
 
 const VARIANT_OPTIONS = ["notice", "warning", "success", "error"];
@@ -17,18 +16,27 @@ function ToastPlayground() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const id = crypto.randomUUID();
     const allToasts = [
       ...toasts,
       {
-        id: crypto.randomUUID(),
+        id,
         variant,
         message,
+        onClose: () => handleClose(id),
       },
     ];
     setVariant(DEFAULT_VARIANT);
     setMessage(DEFAULT_MESSAGE);
     setToasts(allToasts);
   };
+
+  const handleClose = (id) => {
+    setToasts(function (prevState) {
+      return prevState.filter((toast) => toast.id !== id);
+    });
+  };
+
   return (
     <div className={styles.wrapper}>
       <header>
