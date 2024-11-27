@@ -25,6 +25,20 @@ function ToastProvider({ children }) {
     setToasts(allToasts);
   };
 
+  React.useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setToasts([]);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <ToastContext.Provider
       value={{
